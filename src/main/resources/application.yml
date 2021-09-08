@@ -1,0 +1,13 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: msa-config
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://${user.home}/dev/msa-config-yml
+          default-label: main
