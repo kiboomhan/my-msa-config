@@ -1,13 +1,44 @@
 server:
   port: 8888
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defautZone: http://localhost:8761/eureka
+
 spring:
   application:
     name: msa-config
-
+    #  profiles:
+    #    active: native
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     config:
       server:
+#        native:
+#          search-locations: file://${user.home}/dev/msa-config-yml
         git:
-          uri: file://${user.home}/dev/msa-config-yml
+#          uri: file://${user.home}/dev/msa-config-yml
           default-label: main
+          uri: https://github.com/kiboomhan/my-msa-config-yml.git
+#          username: private시 입력
+#          password: private시 입력
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
+
+encrypt:
+#  key: private-salt-key
+  key-store:
+    location: file:///${user.home}/dev/msa-config-yml/keystore/my-msa-config-private.jks
+    password: test1234
+    alias: my-msa-config-private
