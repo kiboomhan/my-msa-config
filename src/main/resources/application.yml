@@ -1,12 +1,12 @@
 server:
   port: 8888
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defautZone: http://localhost:8761/eureka
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defautZone: http://localhost:8761/eureka
 
 spring:
   application:
@@ -39,6 +39,7 @@ management:
 encrypt:
 #  key: private-salt-key
   key-store:
-    location: file:///${user.home}/dev/msa-config-yml/keystore/my-msa-config-private.jks
+    location: file:///${user.home}/dev/1190_work-idea-study/msa-config-yml/keystore/my-msa-config-private.jks
+#    location: file:/my-msa-config-private.jks
     password: test1234
     alias: my-msa-config-private
